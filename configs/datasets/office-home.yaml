@@ -1,0 +1,2 @@
+architecture: Resnet50
+adaptation_cycles: 75

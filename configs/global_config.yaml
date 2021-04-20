@@ -1,0 +1,85 @@
+datasets:
+  VISDA17:
+    pattern: "/path/to/VisDA-2017/<domain>/<class>/<image>"
+    domains: [ 'train', 'validation', 'test_nosym' ]
+    num_classes: 12
+  Office-Home:
+    pattern: "/path/to/Office-Home/<domain>/<class>/<image>"
+    domains: [ 'Art', 'Clipart', 'Product', 'Real World' ]
+    num_classes: 65
+  Office-Caltech:
+    pattern: "/path/to/Office-Caltech/<domain>/<class>/<image>"
+    domains: [ 'amazon', 'caltech', 'dslr', 'webcam' ]
+    num_classes: 10
+  Office-31:
+    pattern: "/path/to/Office-31/<domain>/images/<class>/<image>"
+    domains: [ 'amazon', 'dslr', 'webcam' ]
+    num_classes: 31
+  Modern-Office-31:
+    pattern: "/path/to/Office-31_refurbished/<domain>/images/<class>/<image>"
+    domains: [ 'amazon', 'dslr', 'webcam', 'synthetic' ]
+    num_classes: 31
+  ImageCLEF:
+    pattern: "/path/to/ImageCLEF-2014/<domain>/<class>/<image>"
+    domains: [ 'bing', 'caltech', 'imagenet', 'pascal' ]
+    num_classes: 12
+  Adaptiope:
+    pattern: "/path/to/Adaptiope/<domain>/<class>/<image>"
+    domains: [ 'product_images', 'real_life', 'synthetic' ]
+    num_classes: 123
+
+# Paths for logging and snapshotting
+paths:
+  log_dir: "/path/to/runs"
+  tmp_dir: "/path/to/tmp"
+
+# Miscellaneous control parameters
+seed: 1
+debug: False
+ignore_params: [ ]
+pretrained: True
+use_amp: True
+use_dsbn: False
+show_per_class_acc: False
+show_mean_class_acc: False
+multisource_merged: False
+source_only: False
+
+# Ablation parameters - CVP
+use_cvp: True
+num_samples: 32
+samples_loss_weight: 0.75
+
+# Hyperparameters
+source_iterations: 500
+test_every: 500
+batch_size: 128
+sample_num_classes: 16
+test_batch_size: 512
+lsm_eps: 0.25
+smooth_domains: [ ]
+pseudo_label_type: 'MCD'  # or 'NORMAL'
+
+# Other params
+adaptation_cycles: 200
+
+# MC Dropout
+uncertain_repeats: 1
+uncertain_mc_iters: 32
+base_dropout: 0.5
+uncertain_mc_dropout: 0.85
+
+# Optimizer parameters
+optimizer_params:
+  SOURCE_ONLY_TRAIN:
+    optimizer: SGD
+    lr: 0.0005
+    weight_decay: 0.00001
+    momentum: 0.95
+    nesterov: True
+  ADAPTATION_TRAIN:
+    optimizer: SGD
+    lr: 0.00025
+    weight_decay: 0.00001
+    momentum: 0.95
+    nesterov: True
