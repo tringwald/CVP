@@ -5,10 +5,10 @@
 - Activate env with ```conda activate CVP```
 - Run the script with:
 ```
-CUDA_VISIBLE_DEVICES=0,1 python3 src/run.py \ 
+CUDA_VISIBLE_DEVICES=0,1 python3 src/run.py \
 --source-dataset Adaptiope/real_life \
 --target-dataset Adaptiope/synthetic \
---configs configs/datasets/adaptiope.yaml configs/archs/resnet101.yaml \ 
+--configs configs/datasets/adaptiope.yaml configs/archs/resnet101.yaml \
 --sub-dir TESTING --comment CHECKING_SETUP
 ```
 
